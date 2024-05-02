@@ -1,11 +1,11 @@
 package ecg_entity
 
 const (
-	ClassA HeartFailureClass = "NYHA Class:I"
-	ClassB HeartFailureClass = "NYHA Class:I-II"
-	ClassC HeartFailureClass = "NYHA Class:II"
-	ClassD HeartFailureClass = "NYHA Class:II-III"
-	ClassE HeartFailureClass = "NYHA Class:III"
-	ClassF HeartFailureClass = "NYHA Class:III-IV"
-	ClassG HeartFailureClass = "NYHA Class:IV"
+	CLASSA HeartFailureClass = "NYHA Class:I"
+	CLASSB HeartFailureClass = "NYHA Class:I-II"
+	CLASSC HeartFailureClass = "NYHA Class:II"
+	CLASSD HeartFailureClass = "NYHA Class:II-III"
+	CLASSE HeartFailureClass = "NYHA Class:III"
+	CLASSF HeartFailureClass = "NYHA Class:III-IV"
+	CLASSG HeartFailureClass = "NYHA Class:IV"
 )
