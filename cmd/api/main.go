@@ -1,23 +1,27 @@
 package main
 
 import (
+	"tugas-sirs/internal/modules/pkg/configs"
 	pkg_http "tugas-sirs/pkg/http"
 	pkg_http_middleware "tugas-sirs/pkg/http/middleware"
-	pkg_logger "tugas-sirs/pkg/logger"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	pkg_logger.InitLogger(gin.DebugMode,pkg_http.LOGFILE)
-	srv := pkg_http.NewHTTPServer(gin.DebugMode)
+	env := configs.LoadConfig()
+
+	srv := pkg_http.NewHTTPServer(env.AppEnv)
 
 	srv.Use(
 		pkg_http_middleware.TraceIdAssignmentMiddleware(),
-		pkg_http_middleware.LogHandler(pkg_http.LOGFILE),
+		pkg_http_middleware.LogHandler(env.LogPath),
 		gin.Recovery(),
 		gin.Logger(),
 		pkg_http_middleware.ErrorHandler(),
 	)
 
+	if err := srv.Run(":" + env.Port); err != nil {
+		panic(err)
+	}
 }
