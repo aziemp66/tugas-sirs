@@ -1,7 +1,7 @@
 package main
 
 import (
-	"tugas-sirs/internal/modules/pkg/configs"
+	"tugas-sirs/internal/pkg/configs"
 	pkg_http "tugas-sirs/pkg/http"
 	pkg_http_middleware "tugas-sirs/pkg/http/middleware"
 
