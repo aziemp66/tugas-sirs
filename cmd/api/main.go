@@ -9,6 +9,7 @@ import (
 	pkg_db "tugas-sirs/pkg/db"
 	pkg_http "tugas-sirs/pkg/http"
 	pkg_http_middleware "tugas-sirs/pkg/http/middleware"
+	pkg_logger "tugas-sirs/pkg/logger"
 
 	"github.com/gin-gonic/gin"
 )
@@ -16,11 +17,13 @@ import (
 func main() {
 	env := configs.LoadConfig()
 
+	pkg_logger.InitLogger(env.AppEnv, env.LogPath)
+
 	srv := pkg_http.NewHTTPServer(env.AppEnv)
 
 	srv.Use(
 		pkg_http_middleware.TraceIdAssignmentMiddleware(),
-		pkg_http_middleware.LogHandler(env.LogPath),
+		pkg_http_middleware.LogHandler(),
 		gin.Recovery(),
 		gin.Logger(),
 		pkg_http_middleware.ErrorHandler(),
