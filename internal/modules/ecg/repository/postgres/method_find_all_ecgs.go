@@ -11,7 +11,7 @@ import (
 // If there are no ECG records found, it returns nil and a NotFound error.
 // If an error occurs during the retrieval process, it returns nil and a BadRequest error.
 // Otherwise, it returns a slice of Ecg pointers and nil.
-func (ecgRepositoryPostgres *ecgRepositoryPostgres) FindAllEcg(ctx context.Context) (*[]*ecg_entity.Ecg, error) {
+func (ecgRepositoryPostgres *ecgRepositoryPostgres) FindAllEcgs(ctx context.Context) (*[]*ecg_entity.Ecg, error) {
 	ecgs := new([]*ecg_entity.Ecg)
 
 	err := ecgRepositoryPostgres.db.SelectContext(ctx,ecgs,query_FIND_ALL_EGCS)
