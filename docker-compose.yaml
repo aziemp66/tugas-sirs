@@ -1,0 +1,22 @@
+name: sirs-app-project
+services:
+  backend:
+    build:
+      context: ./
+      dockerfile: ./dockerfile
+    ports:
+      - 5000:5000
+    depends_on:
+      - db-postgres
+  db-postgres:
+    image: postgres:14.2
+    environment:
+      POSTGRES_USER: sirs
+      POSTGRES_PASSWORD: 123456789
+      POSTGRES_DB:  sirs-app
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+volumes:
+  postgres-data:
