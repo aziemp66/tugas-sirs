@@ -8,8 +8,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Implements EcgController
-// TODO: Comment Here
+// UpdateEcgByID handles the update of an ECG record by its ID.
+// It takes the Gin context as input.
+// It extracts the ECG ID and update request data from the request parameters.
+// It binds the request data to the UpdateEcgByID struct.
+// It delegates the update process to the EcgUsecase.
+// If an error occurs during the update process, it returns the error.
+// Otherwise, it returns a JSON response with the status code 200 indicating successful update.
 func (ecgControllerImplementation *ecgControllerImplementation) UpdateEcgByID(ctx *gin.Context) {
 	id := ctx.Param("id")
 	req := new(ecg_request.UpdateEcgByID)

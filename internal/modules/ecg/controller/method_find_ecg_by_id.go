@@ -7,8 +7,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Implements EcgController
-// TODO: Comment Here
+// FindEcgByID handles the retrieval of an ECG record by its ID.
+// It takes the Gin context as input.
+// It extracts the ECG ID from the request parameters.
+// It delegates the retrieval process to the EcgUsecase.
+// If an error occurs during the retrieval process, it returns the error.
+// Otherwise, it returns a JSON response with the status code 200 and the retrieved ECG record.
 func (ecgControllerImplementation *ecgControllerImplementation) FindEcgByID(ctx *gin.Context) {
 	id := ctx.Param("id")
 

@@ -8,8 +8,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Implements EcgController
-// TODO: Comment Here
+// It takes the Gin context as input.
+// If the request body cannot be bound to the CreateEcgRequest struct, it returns the error.
+// If an error occurs during the creation process, it returns the error.
+// Otherwise, it returns a JSON response with the status code 201 and a success message.
 func (ecgControllerImplementation *ecgControllerImplementation) CreateEcg(ctx *gin.Context) {
 	req := new(ecg_request.CreateEcgRequest)
 	if err := ctx.ShouldBindJSON(req); err != nil {
