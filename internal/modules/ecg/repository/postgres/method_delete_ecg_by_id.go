@@ -10,7 +10,7 @@ import (
 // If the deletion is successful, it returns nil.
 // If an error occurs during the deletion process, it returns an error.
 func (ecgRepositoryPostgres *ecgRepositoryPostgres) DeleteEcgByID(ctx context.Context, id string) error {
-	_, err := ecgRepositoryPostgres.db.ExecContext(ctx, DELETEECG, id)
+	_, err := ecgRepositoryPostgres.db.ExecContext(ctx, query_DELETE_ECG_BY_ID,id)
 	if err != nil {
 		return pkg_error.NewBadRequest(err, "Failed to Delete Ecg")
 	}

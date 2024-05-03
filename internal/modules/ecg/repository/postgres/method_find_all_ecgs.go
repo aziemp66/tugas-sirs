@@ -14,13 +14,10 @@ import (
 func (ecgRepositoryPostgres *ecgRepositoryPostgres) FindAllEcg(ctx context.Context) (*[]*ecg_entity.Ecg, error) {
 	ecgs := new([]*ecg_entity.Ecg)
 
-	rows, err := ecgRepositoryPostgres.db.QueryxContext(ctx, FINDALLECGS)
-	ecgRepositoryPostgres.db.SelectContext(ctx,ecgs,FINDALLECGS)
+	err := ecgRepositoryPostgres.db.SelectContext(ctx,ecgs,query_FIND_ALL_EGCS)
 	if err != nil {
 		return nil, pkg_error.NewBadRequest(err, "Failed to Get All Ecgs")
-	} else if rows.Err() != nil {
-		return nil,rows.Err()
-	}
+	} 
 
 	return ecgs, nil
 }

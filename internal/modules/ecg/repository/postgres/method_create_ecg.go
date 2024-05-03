@@ -15,7 +15,7 @@ import (
 func (ecgRepositoryPostgres *ecgRepositoryPostgres) CreateEcg(ctx context.Context, name string, age int, sex bool, heartFailure ecg_entity.HeartFailureClass) (string, error) {
 	id := uuid.NewString()
 
-	_, err := ecgRepositoryPostgres.db.ExecContext(ctx, CREATEECG, id, name, age, sex, string(heartFailure))
+	_, err := ecgRepositoryPostgres.db.ExecContext(ctx, query_CREATE_ECG, id, name, age, sex, string(heartFailure))
 	if err != nil {
 		return "", pkg_error.NewBadRequest(err, "Failed to Create Ecg")
 	}

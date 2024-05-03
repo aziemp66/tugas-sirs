@@ -12,7 +12,7 @@ import (
 // If the update operation is successful, it returns nil.
 // If an error occurs during the update process, it returns a BadRequest error.
 func (ecgRepositoryPostgres *ecgRepositoryPostgres) UpdateEcgByID(ctx context.Context, id string, name string, age int, sex bool, heartFailure ecg_entity.HeartFailureClass) error {
-	result, err := ecgRepositoryPostgres.db.ExecContext(ctx, UPDATEEGCBYID, id, name, age, sex, string(heartFailure))
+	result, err := ecgRepositoryPostgres.db.ExecContext(ctx, query_UPDATE_ECG_BY_ID, id, name, age, sex, string(heartFailure))
 	if err != nil {
 		return pkg_error.NewBadRequest(err, "Error Updating Ecg By ID")
 	}
