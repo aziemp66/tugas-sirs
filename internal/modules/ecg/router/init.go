@@ -6,10 +6,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func BindEcgRouter(router *gin.RouterGroup,ecgController ecg_controller.EcgController)  {
-	router.POST("",ecgController.CreateEcg)
-	router.GET("",ecgController.FindAllEcg)
-	router.GET("/:id",ecgController.FindEcgByID)
-	router.PUT("/:id",ecgController.UpdateEcgByID)
-	router.DELETE("/:id",ecgController.DeleteEcg)
+func BindEcgRouter(router *gin.RouterGroup, ecgController ecg_controller.EcgController) {
+	router.POST("", ecgController.CreateEcg)
+	router.GET("", ecgController.FindAllEcgs)
+	router.GET("/:id", ecgController.FindEcgByID)
+	router.PUT("/:id", ecgController.UpdateEcgByID)
+	router.DELETE("/:id", ecgController.DeleteEcgByID)
 }

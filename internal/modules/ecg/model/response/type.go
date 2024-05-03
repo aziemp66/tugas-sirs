@@ -1,7 +1,7 @@
 package ecg_response
 
 type EcgResponse struct {
-	ID           string `json:"id"`
+	ID           string `json:"ecg_id"`
 	Name         string `json:"name"`
 	Age          int    `json:"age"`
 	Sex          bool   `json:"sex"`
