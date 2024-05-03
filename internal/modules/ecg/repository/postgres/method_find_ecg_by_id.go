@@ -12,10 +12,10 @@ import (
 // If the ECG record is not found, it returns nil and a NotFound error.
 // If an error occurs during the retrieval process, it returns nil and a BadRequest error.
 // Otherwise, it returns the Ecg pointer and nil.
-func (ecgRepositoryPostgres *ecgRepositoryPostgres) FindEcgByID(ctx context.Context, tx *sql.Tx, id string) (*ecg_entity.Ecg, error) {
+func (ecgRepositoryPostgres *ecgRepositoryPostgres) FindEcgByID(ctx context.Context, id string) (*ecg_entity.Ecg, error) {
 	ecg := new(ecg_entity.Ecg)
 
-	row := tx.QueryRowContext(ctx, FINDECGBYID, id)
+	row := ecgRepositoryPostgres.db.QueryRowContext(ctx, FINDECGBYID, id)
 	if err := row.Err(); err != nil {
 		if err == sql.ErrNoRows {
 			return nil, pkg_error.NewNotFound(err, "Ecg Not Found")
