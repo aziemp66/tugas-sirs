@@ -23,7 +23,7 @@ func (ecgControllerImplementation *ecgControllerImplementation) UpdateEcgByID(ct
 		return
 	}
 
-	err := ecgControllerImplementation.ecgUsecase.UpdateEcgByID(ctx, id, req.Name, req.Age, req.Sex, req.HeartFailure)
+	err := ecgControllerImplementation.ecgUsecase.UpdateEcgByID(ctx, id, *req.Name, *req.Age, *req.Sex, *req.HeartFailure)
 	if err != nil {
 		ctx.Error(err)
 		return

@@ -19,7 +19,7 @@ func (ecgControllerImplementation *ecgControllerImplementation) CreateEcg(ctx *g
 		return
 	}
 
-	id, err := ecgControllerImplementation.ecgUsecase.CreateEcg(ctx, req.Name, req.Age, req.Sex, req.HeartFailure)
+	id, err := ecgControllerImplementation.ecgUsecase.CreateEcg(ctx, *req.Name, *req.Age, *req.Sex, *req.HeartFailure)
 	if err != nil {
 		ctx.Error(err)
 		return
